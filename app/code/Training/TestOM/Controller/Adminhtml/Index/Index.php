@@ -1,12 +1,11 @@
 <?php
 
-namespace Training\TestOM\Controller;
+namespace Training\TestOM\Controller\Adminhtml\Index;
 
 use Training\TestOM\Model\Test;
-use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 
-class Index extends Action implements HttpGetActionInterface
+class Index implements HttpGetActionInterface
 {
     private $test;
 
@@ -19,5 +18,6 @@ class Index extends Action implements HttpGetActionInterface
     public function execute()
     {
         $this->test->log();
+        exit;
     }
 }
