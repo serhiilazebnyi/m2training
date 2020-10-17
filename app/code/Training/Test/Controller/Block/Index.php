@@ -2,32 +2,28 @@
 
 namespace Training\Test\Controller\Block;
 
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\HttpGetActionInterface;
-use Magento\Framework\View\LayoutFactory;
+use Magento\Framework\Controller\Result\RawFactory;
 
-class Index extends \Magento\Framework\App\Action\Action implements HttpGetActionInterface
+class Index implements HttpGetActionInterface
 {
     /**
-     * @var LayoutFactory
+     * @var RawFactory
      */
-    private $layoutFactory;
+    private $rawFactory;
 
     /**
-     * @param Context $context
-     * @param LayoutFactory $layoutFactory
+     * @param RawFactory $rawFactory
      */
     public function __construct(
-        Context $context,
-        LayoutFactory $layoutFactory
+        RawFactory $rawFactory
     ) {
-        $this->layoutFactory = $layoutFactory;
-        parent::__construct($context);
+        $this->rawFactory = $rawFactory;
     }
     public function execute()
     {
-        $layout = $this->layoutFactory->create();
-        $block = $layout->createBlock('Training\Test\Block\Test');
-        $this->getResponse()->appendBody($block->toHtml());
+        $rawResult = $this->rawFactory->create();
+        $rawResult->setContents('<b>Hello world from block!</b>');
+        return $rawResult;
     }
 }
