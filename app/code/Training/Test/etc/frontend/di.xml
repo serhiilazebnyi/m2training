@@ -7,13 +7,13 @@
         <plugin name="training_test_2" type="Training\Test\Plugin\Block\Template" />
     </type>-->
     <!--Плагин отключен из-за ошибки в Magento 2.4-->
-    
+
 <!--    <type name="Magento\Catalog\Controller\Product\View">
         <plugin name="training_test_3" type="Training\Test\Plugin\Controller\Product\View" />
     </type>-->
     <!--Плагин отключен, чтобы не конфликтовать с обсервером-->
     <preference for="Magento\Framework\App\FrontControllerInterface" type="Training\Test\App\FrontController"/>
-    <type name="Magento\Framework\App\Router\NoRouteHandlerList">
+<!--    <type name="Magento\Framework\App\Router\NoRouteHandlerList">
         <arguments>
             <argument name="handlerClassesList" xsi:type="array">
                 <item name="default" xsi:type="array">
@@ -22,5 +22,9 @@
             </item>
             </argument>
         </arguments>
+    </type>-->
+    <type name="Magento\Catalog\Block\Product\View\Description">
+        <plugin name="product-view-description-plugin"
+                type="Training\Test\Plugin\Block\Product\View\Description" sortOrder="10"/>
     </type>
 </config>
